@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #5e3bee;
+}
+
+:root {
+  --font-family: "Roboto", sans-serif;
+  --color-primary: #5e3bee;
+  --color-heading: #282938;
+  --color-body: #1c1e53;
+}
+
+@layer utilities {
+  .body01 {
+    font-family: var(--font-family);
+    color: #000;
+    font-size: 18px;
+  }
+  .body02 {
+    font-family: var(--font-family);
+    color: #000;
+    font-size: 16px;
+  }
+  .body03 {
+    font-family: var(--font-family);
+    color: #000;
+    font-size: 14px;
+  }
+  .btn-border {
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    @apply px-[30px] py-4 rounded-md duration-200;
+  }
+  .btn-border:hover {
+    color: white;
+    background-color: var(--color-primary);
+  }
+
+  .hover-primary {
+    @apply transition-colors duration-200;
+  }
+  .hover-primary:hover {
+    color: var(--color-primary);
+  }
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    @apply w-44 py-5 rounded-md hover:opacity-90 transition-opacity font-['Roboto'] text-[21px];
+  }
+
+  .skill-item {
+    @apply transition-all duration-300 cursor-pointer border-b-4 border-transparent;
+  }
+  .skill-item:hover {
+    @apply shadow-lg -translate-y-1;
+    border-bottom-color: var(--color-primary);
+  }
+
+  .skill-icon-container {
+    @apply transition-shadow duration-300;
+  }
+  .skill-item:hover .skill-icon-container {
+    @apply shadow-md;
+  }
+
+  .skill-icon {
+    @apply transition-transform duration-300;
+  }
+  .skill-item:hover .skill-icon {
+    @apply scale-110;
+  }
+
+  .portfolio-item {
+    @apply transition-all duration-300 cursor-pointer border-b-4 border-transparent;
+  }
+  .portfolio-item:hover {
+    @apply shadow-lg -translate-y-1;
+    border-bottom-color: var(--color-primary);
+  }
+
+  .portfolio-image {
+    @apply transition-transform duration-500;
+  }
+  .portfolio-item:hover .portfolio-image {
+    @apply scale-105;
+  }
+
+  .portfolio-link {
+    border-bottom: 2px solid var(--color-primary);
+    @apply transition-colors duration-300;
+  }
+  .portfolio-link:hover {
+    border-bottom-color: var(--color-heading);
+  }
+  .portfolio-link:hover .portfolio-arrow {
+    color: var(--color-primary);
+    @apply translate-x-0.5 -translate-y-0.5;
+  }
+
+  .portfolio-arrow {
+    @apply transition-all duration-300;
+  }
+}
