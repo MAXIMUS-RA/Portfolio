@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 
 const ContactSection = () => {
@@ -13,6 +13,7 @@ const ContactSection = () => {
   });
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const topics = [
     "Web Development",
@@ -21,6 +22,17 @@ const ContactSection = () => {
     "Consultation",
     "Other",
   ];
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -41,16 +53,16 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="w-full py-32">
+    <section className="w-full py-32 fade-in-section">
       <div className="flex flex-col items-center gap-5 mb-16">
-        <h3 className="text-xl font-semibold text-gray-800 font-['Roboto'] leading-loose text-center">
+        <h3 className="text-xl font-semibold text-gray-800 font-['Roboto'] leading-loose text-center stagger-child">
           Get In Touch
         </h3>
         <div className="flex flex-col items-center gap-8 max-w-4xl">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 font-['Roboto'] leading-tight text-center">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 font-['Roboto'] leading-tight text-center stagger-child delay-100">
             Contact me
           </h2>
-          <p className="text-xl sm:text-2xl font-normal text-gray-700 font-['Roboto'] leading-9 text-center">
+          <p className="text-xl sm:text-2xl font-normal text-gray-700 font-['Roboto'] leading-9 text-center stagger-child delay-200">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
         </div>
@@ -58,8 +70,9 @@ const ContactSection = () => {
 
       <div className="max-w-4xl mx-auto">
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+          {/* First Name & Last Name */}
           <div className="flex flex-col lg:flex-row gap-8">
-            <div className="flex-1 flex flex-col gap-2.5">
+            <div className="flex-1 flex flex-col gap-2.5 stagger-child delay-300">
               <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
                 First name
               </label>
@@ -71,7 +84,7 @@ const ContactSection = () => {
                 className="h-16 px-4 bg-white rounded-lg border-[1.33px] border-indigo-600 text-xl font-['Roboto'] outline-none focus:border-2 focus:border-indigo-700 transition-colors"
               />
             </div>
-            <div className="flex-1 flex flex-col gap-2.5">
+            <div className="flex-1 flex flex-col gap-2.5 stagger-child delay-400">
               <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
                 Last name
               </label>
@@ -86,7 +99,7 @@ const ContactSection = () => {
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8">
-            <div className="flex-1 flex flex-col gap-2.5">
+            <div className="flex-1 flex flex-col gap-2.5 stagger-child delay-500">
               <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
                 Email
               </label>
@@ -98,7 +111,7 @@ const ContactSection = () => {
                 className="h-16 px-4 bg-white rounded-lg border-[1.33px] border-indigo-600 text-xl font-['Roboto'] outline-none focus:border-2 focus:border-indigo-700 transition-colors"
               />
             </div>
-            <div className="flex-1 flex flex-col gap-2.5">
+            <div className="flex-1 flex flex-col gap-2.5 stagger-child delay-600">
               <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
                 Phone number
               </label>
@@ -112,11 +125,14 @@ const ContactSection = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2.5">
+          <div
+            className="flex flex-col gap-2.5 stagger-child delay-700"
+            style={{ zIndex: 100 }}
+          >
             <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
               Choose a topic
             </label>
-            <div className="relative">
+            <div ref={dropdownRef} className="relative" style={{ zIndex: 100 }}>
               <button
                 type="button"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -135,13 +151,22 @@ const ContactSection = () => {
               </button>
 
               {isDropdownOpen && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border-[1.33px] border-indigo-600 rounded-lg shadow-lg z-10">
+                <div
+                  className="absolute w-full bg-white border-[1.33px] border-indigo-600 rounded-lg shadow-2xl mt-1"
+                  style={{
+                    zIndex: 9999,
+                    position: "absolute",
+                    top: "100%",
+                    left: 0,
+                    right: 0,
+                  }}
+                >
                   {topics.map((topic, index) => (
                     <button
                       key={index}
                       type="button"
                       onClick={() => handleTopicSelect(topic)}
-                      className="w-full px-4 py-3 text-left text-xl font-['Roboto'] text-gray-800 hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors"
+                      className="w-full px-4 py-4 text-left text-xl font-['Roboto'] text-gray-800 hover:bg-indigo-50 transition-colors first:rounded-t-lg last:rounded-b-lg border-none bg-white"
                     >
                       {topic}
                     </button>
@@ -151,7 +176,8 @@ const ContactSection = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2.5">
+          {/* Message */}
+          <div className="flex flex-col gap-2.5 stagger-child delay-800">
             <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
               Message
             </label>
@@ -165,7 +191,8 @@ const ContactSection = () => {
             />
           </div>
 
-          <div className="flex items-center gap-2.5">
+          {/* Terms Checkbox */}
+          <div className="flex items-center gap-2.5 stagger-child delay-900">
             <div className="relative">
               <input
                 type="checkbox"
@@ -195,7 +222,8 @@ const ContactSection = () => {
             </label>
           </div>
 
-          <div className="flex justify-center">
+          {/* Submit Button */}
+          <div className="flex justify-center stagger-child delay-1000">
             <button
               type="submit"
               className="btn-primary"

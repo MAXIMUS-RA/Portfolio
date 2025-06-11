@@ -8,7 +8,6 @@ const SkillsSection = () => {
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
       icon: "🎯",
-      hasBottomBorder: true,
     },
     {
       id: 2,
@@ -16,7 +15,6 @@ const SkillsSection = () => {
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
       icon: "🎨",
-      hasBottomBorder: false,
     },
     {
       id: 3,
@@ -24,7 +22,6 @@ const SkillsSection = () => {
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
       icon: "✏️",
-      hasBottomBorder: false,
     },
     {
       id: 4,
@@ -32,19 +29,18 @@ const SkillsSection = () => {
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
       icon: "💻",
-      hasBottomBorder: false,
     },
   ];
 
   return (
-    <section className="w-full sm:py-24 lg:py-36">
+    <section className="w-full sm:py-24 lg:py-36 fade-in-section">
       <div className="max-w-4xl mb-16 sm:mb-20 lg:mb-28">
         <div className="flex flex-col items-start gap-4 sm:gap-5">
-          <h3 className="text-lg sm:text-xl font-semibold text-gray-800 font-['Roboto'] leading-relaxed">
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-800 font-['Roboto'] leading-relaxed stagger-child">
             My Skills
           </h3>
           <div className="w-full">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 font-['Roboto'] leading-tight sm:leading-tight lg:leading-[1.2]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 font-['Roboto'] leading-tight sm:leading-tight lg:leading-[1.2] stagger-child delay-100">
               My Expertise
             </h2>
           </div>
@@ -52,10 +48,12 @@ const SkillsSection = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-11 w-fit pb-4">
-        {skills.map((skill) => (
+        {skills.map((skill, index) => (
           <div
             key={skill.id}
-            className="skill-item py-6 sm:p-8 bg-slate-50 rounded-xl flex flex-col gap-6 sm:gap-8 h-full"
+            className={`skill-item py-6 sm:p-8 bg-slate-50 rounded-xl flex flex-col gap-6 sm:gap-8 h-full stagger-child delay-${
+              (index + 2) * 100
+            }`}
           >
             <div className="flex-shrink-0">
               <div className="w-16 h-16 sm:w-[70px] sm:h-[70px] p-3.5 bg-white rounded-xl shadow-sm flex items-center justify-center skill-icon-container">

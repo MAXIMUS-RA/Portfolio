@@ -7,10 +7,13 @@ import AboutMe from "./AboutMe";
 import PortfolioSection from "./PortfolioSection";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
+import useScrollAnimation from "./ScrollAnimation";
 
 function Layout() {
+  useScrollAnimation(); 
+
   return (
-    <div className="mx-24">
+    <div className="px-4 sm:px-8 lg:px-16 xl:px-20">
       <div className="bg-[#ffffff]">
         <Header />
         <Intro/>
@@ -18,8 +21,8 @@ function Layout() {
         <AboutMe/>
         <PortfolioSection/>
         <ContactSection/>
-        <Footer/>
-      </div>{" "}
+      </div>
+      <Footer />
     </div>
   );
 }
