@@ -1,5 +1,5 @@
 import React from "react";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin,Github } from "lucide-react";
 
 const Footer = () => {
   const navigationLinks = [
@@ -11,24 +11,16 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Instagram, href: "#", label: "Instagram",link:"https://www.instagram.com/m_x_m200_5/" },
+    { icon: Github, href: "#", label: "Github",link:"https://github.com/MAXIMUS-RA" },
   ];
 
-  const legalLinks = ["Privacy Policy", "Terms of Service", "Cookies Settings"];
 
   return (
     <footer className="w-full px-4 sm:px-8 lg:px-20 py-16 lg:py-28 bg-slate-50 fade-in-section">
       <div className="flex flex-col gap-16 lg:gap-28">
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8 lg:gap-0">
           <div className="flex items-center gap-2 stagger-child ">
-            <img
-              src="./src/assets/react.svg"
-              alt="Logo"
-              className="w-8 h-8 object-cover "
-            />
             <span className="text-xl font-semibold font-['Roboto'] text-black">
               Portfolio
             </span>
@@ -58,32 +50,6 @@ const Footer = () => {
                 </a>
               );
             })}
-          </div>
-        </div>
-        <div className="flex flex-col gap-6 lg:gap-11">
-          <div className="w-full h-[1.33px] bg-gray-800/60 stagger-child delay-100"></div>
-          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 lg:gap-0">
-            <div className="text-center lg:text-left stagger-child delay-1100">
-              <span className="text-black text-sm font-normal font-['Roboto'] leading-tight">
-                Made with 💖 by{" "}
-              </span>
-              <span className="text-black text-sm font-semibold font-['Roboto'] leading-tight">
-                Airdokan
-              </span>
-            </div>
-            <div className="flex flex-wrap justify-center lg:justify-start items-center gap-4 lg:gap-8">
-              {legalLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className={`text-black text-sm font-normal font-['Roboto'] leading-tight hover:text-gray-600 transition-colors duration-200 stagger-child delay-${
-                    (index + 12) * 100
-                  }`}
-                >
-                  {link}
-                </a>
-              ))}
-            </div>
           </div>
         </div>
       </div>

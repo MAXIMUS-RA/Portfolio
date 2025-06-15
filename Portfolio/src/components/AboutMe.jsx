@@ -3,7 +3,7 @@ import TechMarquee from "./TechMarquee";
 
 function AboutMe() {
   return (
-    <section className="py-16 md:py-24 lg:py-32 flex flex-col lg:flex-row items-center gap-12 lg:gap-28 fade-in-section">
+    <section id="about" className="py-16 md:py-24 lg:py-32 flex flex-col lg:flex-row items-center gap-12 lg:gap-28 fade-in-section">
      
 
       <div className="flex-1 order-1 lg:order-2 text-center lg:text-left">

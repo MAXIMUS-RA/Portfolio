@@ -5,35 +5,35 @@ const PortfolioSection = () => {
   const projects = [
     {
       id: 1,
-      title: "eCommerce",
+      title: "eCommerce Platform",
       description:
-        "A modern e-commerce web application built with PHP, React Router v7, Postgre SQL,Tailwind.",
-      image: "./src/assets/catalog.png",
+        "A modern e-commerce web application built with PHP, React Router v7, PostgreSQL, and Tailwind CSS.",
+      image: "/images/catalog.png", 
       link: "https://github.com/MAXIMUS-RA/eCommerce.git",
       featured: false,
     },
     {
       id: 2,
-      title: "ToDo Web-App",
+      title: "Task Management App",
       description:
         "A comprehensive todo application with real-time collaboration, drag-and-drop task organization, deadline tracking, and team workspace management.",
-      image: "./src/assets/Todo.png",
+      image: "/images/Todo.png", 
       link: "https://github.com/MAXIMUS-RA/ToDo.git",
       featured: false,
     },
     {
       id: 3,
-      title: "Beautiful Landing Page",
+      title: "Creative Agency Landing",
       description:
         "A stunning responsive landing page featuring smooth scroll animations, interactive portfolio gallery, contact forms, and optimized performance.",
-      image: "./src/assets/Landing.png",
+      image: "/images/Landing.png", 
       link: "https://github.com/MAXIMUS-RA/PromtVerse.git",
       featured: true,
     },
   ];
 
   return (
-    <section className="w-full py-32 fade-in-section">
+    <section id="portfolio" className="w-full py-32 fade-in-section">
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8 mb-16">
         <div className="max-w-4xl">
           <div className="flex flex-col gap-5">

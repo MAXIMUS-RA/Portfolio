@@ -33,7 +33,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section className="w-full sm:py-24 lg:py-36 fade-in-section">
+    <section id="skills" className="w-full sm:py-24 lg:py-36 fade-in-section">
       <div className="max-w-4xl mb-16 sm:mb-20 lg:mb-28">
         <div className="flex flex-col items-start gap-4 sm:gap-5">
           <h3 className="text-lg sm:text-xl font-semibold text-gray-800 font-['Roboto'] leading-relaxed stagger-child">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { Menu, X } from "lucide-react";
+import CircularText from "../CircularText/CircularText"
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,10 +30,6 @@ function Header() {
     >
       <div className="flex justify-between h-16 md:h-20 lg:h-24 items-center">
         <div className="flex items-center gap-2 header-logo">
-          <img
-            src="./src/assets/react.svg"
-            className="w-6 h-6 md:w-8 md:h-8 object-cover"
-          />
           <span className="text-lg md:text-xl font-semibold font-['Roboto']">
             Portfolio
           </span>

@@ -4,8 +4,8 @@ import RotatingText from "../TextAnimation/RotatingText/RotatingText";
 import Stack from "../Stack/Stack";
 
 const images = [
-  { id: 1, img: "./src/assets/IMG_3701 (2)_LE_upscale_balanced_x2.jpg" },
-  { id: 2, img: "./src/assets/IMG_6712.jpg" },
+  { id: 1, img: "images/IMG_3701.jpg" },
+  { id: 2, img: "images/IMG_6712.jpg" },
 ];
 
 function Intro() {
@@ -24,7 +24,7 @@ function Intro() {
   }, []);
 
   return (
-    <section className="py-16 md:py-20 lg:py-24 xl:py-32 flex flex-col lg:flex-row items-center gap-8 lg:gap-16 overflow-hidden">
+    <section id="home" className="py-16 md:py-20 lg:py-24 xl:py-32 flex flex-col lg:flex-row items-center gap-8 lg:gap-16 overflow-hidden">
       <div className="flex-1 order-2 lg:order-1 text-center lg:text-left">
         <div className="flex flex-col gap-4 lg:gap-6">
           <div>

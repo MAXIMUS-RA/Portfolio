@@ -98,7 +98,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="w-full py-32 fade-in-section">
+    <section id="contact" className="w-full py-32 fade-in-section">
       <div className="flex flex-col items-center gap-5 mb-16">
         <h3 className="text-xl font-semibold text-gray-800 font-['Roboto'] leading-loose text-center stagger-child">
           Get In Touch
