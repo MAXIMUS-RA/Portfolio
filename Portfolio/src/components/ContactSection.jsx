@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +14,14 @@ const ContactSection = () => {
   });
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
   const dropdownRef = useRef(null);
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    emailjs.init("r7q26xnCFjcxGZJ09");
+  }, []);
 
   const topics = [
     "Web Development",
@@ -47,9 +55,46 @@ const ContactSection = () => {
     setIsDropdownOpen(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        to_name: "Max",
+        topic: formData.topic,
+        message: formData.message,
+        phone: formData.phone || "Not provided",
+      };
+
+      const result = await emailjs.send(
+        "service_wm9wrf8",
+        "template_m4u4yzn",
+        templateParams,
+      );
+
+      console.log("Email sent successfully:", result);
+      console.log(templateParams);
+      setSubmitStatus("success");
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        topic: "",
+        message: "",
+        acceptTerms: false,
+      });
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -63,36 +108,54 @@ const ContactSection = () => {
             Contact me
           </h2>
           <p className="text-xl sm:text-2xl font-normal text-gray-700 font-['Roboto'] leading-9 text-center stagger-child delay-200">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Ready to start your project? Let's discuss your ideas and bring them
+            to life.
           </p>
         </div>
       </div>
 
       <div className="max-w-4xl mx-auto">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-          {/* First Name & Last Name */}
+        {submitStatus === "success" && (
+          <div className="mb-8 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+            ✅ Message sent successfully! I'll get back to you soon.
+          </div>
+        )}
+
+        {submitStatus === "error" && (
+          <div className="mb-8 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+            ❌ Failed to send message. Please try again or contact me directly.
+          </div>
+        )}
+
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-8"
+        >
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="flex-1 flex flex-col gap-2.5 stagger-child delay-300">
               <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
-                First name
+                First name *
               </label>
               <input
                 type="text"
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleInputChange}
+                required
                 className="h-16 px-4 bg-white rounded-lg border-[1.33px] border-indigo-600 text-xl font-['Roboto'] outline-none focus:border-2 focus:border-indigo-700 transition-colors"
               />
             </div>
             <div className="flex-1 flex flex-col gap-2.5 stagger-child delay-400">
               <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
-                Last name
+                Last name *
               </label>
               <input
                 type="text"
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleInputChange}
+                required
                 className="h-16 px-4 bg-white rounded-lg border-[1.33px] border-indigo-600 text-xl font-['Roboto'] outline-none focus:border-2 focus:border-indigo-700 transition-colors"
               />
             </div>
@@ -101,25 +164,14 @@ const ContactSection = () => {
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="flex-1 flex flex-col gap-2.5 stagger-child delay-500">
               <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
-                Email
+                Email *
               </label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="h-16 px-4 bg-white rounded-lg border-[1.33px] border-indigo-600 text-xl font-['Roboto'] outline-none focus:border-2 focus:border-indigo-700 transition-colors"
-              />
-            </div>
-            <div className="flex-1 flex flex-col gap-2.5 stagger-child delay-600">
-              <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
-                Phone number
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
+                required
                 className="h-16 px-4 bg-white rounded-lg border-[1.33px] border-indigo-600 text-xl font-['Roboto'] outline-none focus:border-2 focus:border-indigo-700 transition-colors"
               />
             </div>
@@ -130,7 +182,7 @@ const ContactSection = () => {
             style={{ zIndex: 100 }}
           >
             <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
-              Choose a topic
+              Choose a topic *
             </label>
             <div ref={dropdownRef} className="relative" style={{ zIndex: 100 }}>
               <button
@@ -176,22 +228,21 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Message */}
           <div className="flex flex-col gap-2.5 stagger-child delay-800">
             <label className="text-xl font-normal text-gray-800 font-['Roboto'] leading-loose">
-              Message
+              Message *
             </label>
             <textarea
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              placeholder="Type your message..."
+              placeholder="Tell me about your project..."
               rows={8}
+              required
               className="p-4 bg-white rounded-lg border-[1.33px] border-indigo-600 text-xl font-['Roboto'] outline-none focus:border-2 focus:border-indigo-700 transition-colors resize-none placeholder-neutral-600"
             />
           </div>
 
-          {/* Terms Checkbox */}
           <div className="flex items-center gap-2.5 stagger-child delay-900">
             <div className="relative">
               <input
@@ -199,6 +250,7 @@ const ContactSection = () => {
                 name="acceptTerms"
                 checked={formData.acceptTerms}
                 onChange={handleInputChange}
+                required
                 className="w-5 h-5 bg-white rounded border-[1.33px] border-gray-800 appearance-none checked:bg-indigo-600 checked:border-indigo-600 transition-colors cursor-pointer"
               />
               {formData.acceptTerms && (
@@ -218,18 +270,17 @@ const ContactSection = () => {
               )}
             </div>
             <label className="text-lg font-normal text-gray-800 font-['Roboto'] leading-7 cursor-pointer">
-              I accept the terms
+              I accept the terms and privacy policy *
             </label>
           </div>
 
-          {/* Submit Button */}
           <div className="flex justify-center stagger-child delay-1000">
             <button
               type="submit"
-              className="btn-primary"
-              disabled={!formData.acceptTerms}
+              className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={!formData.acceptTerms || isSubmitting}
             >
-              Submit
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </div>
         </form>

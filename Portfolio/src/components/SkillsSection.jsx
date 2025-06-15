@@ -4,31 +4,31 @@ const SkillsSection = () => {
   const skills = [
     {
       id: 1,
-      title: "Strategy & Direction",
+      title: "Frontend Development",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      icon: "🎯",
+        "Building responsive and interactive user interfaces with React, TypeScript, and modern CSS frameworks. Creating pixel-perfect designs that work seamlessly across all devices.",
+      icon: "⚛️",
     },
     {
       id: 2,
-      title: "Branding & Logo",
+      title: "Backend Development",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      icon: "🎨",
+        "Developing robust server-side applications using Node.js, Express, and databases. Creating RESTful APIs and handling complex business logic with security best practices.",
+      icon: "🔧",
     },
     {
       id: 3,
-      title: "UI & UX Design",
+      title: "UI/UX Design",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      icon: "✏️",
+        "Designing intuitive user experiences and beautiful interfaces. Proficient in Figma, prototyping, and user research to create designs that users love.",
+      icon: "🎨",
     },
     {
       id: 4,
-      title: "Webflow Development",
+      title: "Full-Stack Solutions",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-      icon: "💻",
+        "End-to-end web application development from concept to deployment. Integrating frontend and backend technologies to deliver complete digital solutions.",
+      icon: "🚀",
     },
   ];
 
@@ -53,17 +53,17 @@ const SkillsSection = () => {
             key={skill.id}
             className={`skill-item py-6 sm:p-8 bg-slate-50 rounded-xl flex flex-col gap-6 sm:gap-8 h-full stagger-child delay-${
               (index + 2) * 100
-            }`}
+            } hover:bg-slate-100 hover:shadow-lg transition-all duration-300 group cursor-pointer`}
           >
             <div className="flex-shrink-0">
-              <div className="w-16 h-16 sm:w-[70px] sm:h-[70px] p-3.5 bg-white rounded-xl shadow-sm flex items-center justify-center skill-icon-container">
-                <span className="text-2xl sm:text-3xl skill-icon">
+              <div className="w-16 h-16 sm:w-[70px] sm:h-[70px] p-3.5 bg-white rounded-xl shadow-sm flex items-center justify-center skill-icon-container group-hover:shadow-md transition-all duration-300">
+                <span className="text-2xl sm:text-3xl skill-icon group-hover:scale-110 transition-transform duration-300">
                   {skill.icon}
                 </span>
               </div>
             </div>
             <div className="flex flex-col gap-4 sm:gap-5 flex-grow">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 font-['Roboto'] leading-tight">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 font-['Roboto'] leading-tight group-hover:text-[#5E3BEE] transition-colors duration-300">
                 {skill.title}
               </h3>
               <p className="text-base sm:text-lg lg:text-xl font-normal text-gray-700 font-['Roboto'] leading-relaxed">

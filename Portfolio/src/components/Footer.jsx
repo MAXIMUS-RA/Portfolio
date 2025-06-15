@@ -23,11 +23,11 @@ const Footer = () => {
     <footer className="w-full px-4 sm:px-8 lg:px-20 py-16 lg:py-28 bg-slate-50 fade-in-section">
       <div className="flex flex-col gap-16 lg:gap-28">
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8 lg:gap-0">
-          <div className="flex items-center gap-2 stagger-child">
+          <div className="flex items-center gap-2 stagger-child ">
             <img
               src="./src/assets/react.svg"
               alt="Logo"
-              className="w-8 h-8 object-cover"
+              className="w-8 h-8 object-cover "
             />
             <span className="text-xl font-semibold font-['Roboto'] text-black">
               Portfolio

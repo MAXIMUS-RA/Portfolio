@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import BtnPrimary from "./BtnPprimary";
 import RotatingText from "../TextAnimation/RotatingText/RotatingText";
+import Stack from "../Stack/Stack";
+
+const images = [
+  { id: 1, img: "./src/assets/IMG_3701 (2)_LE_upscale_balanced_x2.jpg" },
+  { id: 2, img: "./src/assets/IMG_6712.jpg" },
+];
 
 function Intro() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -27,7 +33,7 @@ function Intro() {
             </span>
             <div className="animate-slide-up-delay-1">
               <h1 className="text-gray-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-['Roboto'] leading-tight">
-                <div className="flex items-center gap-4 " >
+                <div className="flex items-center gap-4 ">
                   I create{" "}
                   <RotatingText
                     texts={[
@@ -39,7 +45,7 @@ function Intro() {
                     mainClassName=" w-fit auto text-[#5E3BEE]  overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
                     staggerFrom={"last"}
                     initial={{ y: "100%" }}
-                    animate={{ y: 0 , opacity: 1 }}
+                    animate={{ y: 0, opacity: 1 }}
                     exit={{ y: "-120%" }}
                     staggerDuration={0.025}
                     splitLevelClassName="overflow-hidden "
@@ -54,12 +60,11 @@ function Intro() {
 
           <div className="animate-slide-up-delay-2">
             <p className="text-lg md:text-xl lg:text-2xl font-['Roboto'] leading-relaxed text-gray-700 max-w-lg mx-auto lg:mx-0">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse varius enim in eros elementum tristique.
+              I’m a full-stack developer from Ukraine, passionate about building scalable web applications and crafting interactive user experiences with modern technologies.
             </p>
           </div>
 
-          <div className="mt-6 lg:mt-8 animate-slide-up-delay-3">
+          <div className="mt-6 mx-10 lg:mt-8 animate-slide-up-delay-3">
             <BtnPrimary>Get in touch</BtnPrimary>
           </div>
         </div>
@@ -72,10 +77,11 @@ function Intro() {
             transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
           }}
         >
-          <img
-            src="./src/assets/img-people.svg"
-            alt="Person illustration"
-            className="w-full max-w-md lg:max-w-lg xl:max-w-xl h-auto object-contain mx-auto"
+          <Stack
+            sensitivity={180}
+            sendToBackOnClick={false}
+            cardDimensions={{ width: 500, height: 600 }}
+            cardsData={images}
           />
         </div>
 

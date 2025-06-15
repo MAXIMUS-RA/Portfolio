@@ -81,7 +81,7 @@ class Noise {
     return this.lerp(
       this.lerp(n00, n10, u),
       this.lerp(n01, n11, u),
-      this.fade(y),
+      this.fade(y)
     );
   }
 }
@@ -213,7 +213,7 @@ const Waves = ({
           const move =
             noise.perlin2(
               (p.x + time * waveSpeedX) * 0.002,
-              (p.y + time * waveSpeedY) * 0.0015,
+              (p.y + time * waveSpeedY) * 0.0015
             ) * 12;
           p.wave.x = Math.cos(move) * waveAmpX;
           p.wave.y = Math.sin(move) * waveAmpY;
@@ -237,11 +237,11 @@ const Waves = ({
           p.cursor.y += p.cursor.vy * 2;
           p.cursor.x = Math.min(
             maxCursorMove,
-            Math.max(-maxCursorMove, p.cursor.x),
+            Math.max(-maxCursorMove, p.cursor.x)
           );
           p.cursor.y = Math.min(
             maxCursorMove,
-            Math.max(-maxCursorMove, p.cursor.y),
+            Math.max(-maxCursorMove, p.cursor.y)
           );
         });
       });
@@ -267,7 +267,7 @@ const Waves = ({
           p1 = moved(p, !isLast);
           const p2 = moved(
             points[idx + 1] || points[points.length - 1],
-            !isLast,
+            !isLast
           );
           ctx.lineTo(p1.x, p1.y);
           if (isLast) ctx.moveTo(p2.x, p2.y);
@@ -346,14 +346,6 @@ const Waves = ({
       }}
       className={`absolute top-0 left-0 w-full h-full overflow-hidden ${className}`}
     >
-      <div
-        className="absolute top-0 left-0 bg-[#160000] rounded-full w-[0.5rem] h-[0.5rem]"
-        style={{
-          transform:
-            "translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)",
-          willChange: "transform",
-        }}
-      />
       <canvas ref={canvasRef} className="block w-full h-full" />
     </div>
   );

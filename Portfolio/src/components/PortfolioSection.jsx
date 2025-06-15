@@ -1,32 +1,35 @@
-import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import React from "react";
+import { ArrowUpRight } from "lucide-react";
 
 const PortfolioSection = () => {
   const projects = [
     {
       id: 1,
-      title: "Ahuse",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: "https://placehold.co/555x400",
-      link: "#",
-      featured: false
+      title: "eCommerce",
+      description:
+        "A modern e-commerce web application built with PHP, React Router v7, Postgre SQL,Tailwind.",
+      image: "./src/assets/catalog.png",
+      link: "https://github.com/MAXIMUS-RA/eCommerce.git",
+      featured: false,
     },
     {
       id: 2,
-      title: "App Dashboard",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: "https://placehold.co/555x400",
-      link: "#",
-      featured: false
+      title: "ToDo Web-App",
+      description:
+        "A comprehensive todo application with real-time collaboration, drag-and-drop task organization, deadline tracking, and team workspace management.",
+      image: "./src/assets/Todo.png",
+      link: "https://github.com/MAXIMUS-RA/ToDo.git",
+      featured: false,
     },
     {
       id: 3,
-      title: "Easy Rent",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: "https://placehold.co/555x400",
-      link: "#",
-      featured: true
-    }
+      title: "Beautiful Landing Page",
+      description:
+        "A stunning responsive landing page featuring smooth scroll animations, interactive portfolio gallery, contact forms, and optimized performance.",
+      image: "./src/assets/Landing.png",
+      link: "https://github.com/MAXIMUS-RA/PromtVerse.git",
+      featured: true,
+    },
   ];
 
   return (
@@ -46,7 +49,7 @@ const PortfolioSection = () => {
         <div className="flex-shrink-0 stagger-child delay-200">
           <button className="btn-border">
             <span className="text-sm font-normal font-['Roboto'] whitespace-nowrap">
-              Visit My Dribbble
+              <a href="https://github.com/MAXIMUS-RA">Visit My GitHub</a>
             </span>
           </button>
         </div>
@@ -56,13 +59,15 @@ const PortfolioSection = () => {
         {projects.map((project, index) => (
           <div
             key={project.id}
-            className={`portfolio-item bg-slate-50 rounded-xl flex flex-col overflow-hidden h-full stagger-child delay-${(index + 3) * 100}`}
+            className={`portfolio-item bg-slate-50 rounded-xl flex flex-col overflow-hidden h-full stagger-child delay-${
+              (index + 3) * 100
+            }`}
           >
             <div className="relative overflow-hidden">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-64 lg:h-96 object-cover portfolio-image"
+                className="w-full h-64 lg:h-96 object-cover portfolio-image outline"
               />
             </div>
 
@@ -82,7 +87,7 @@ const PortfolioSection = () => {
                   className="portfolio-link inline-flex items-center gap-4 pb-2.5"
                 >
                   <span className="text-sm font-semibold text-black font-['Roboto']">
-                    View In Dribbble
+                    View In GitHub
                   </span>
                   <ArrowUpRight className="w-4 h-4 text-gray-700 portfolio-arrow" />
                 </a>
