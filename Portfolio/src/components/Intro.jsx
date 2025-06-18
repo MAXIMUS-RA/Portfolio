@@ -33,7 +33,7 @@ function Intro() {
             </span>
             <div className="animate-slide-up-delay-1">
               <h1 className="text-gray-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-['Roboto'] leading-tight">
-                <div className="flex items-center gap-4 ">
+                <div className="flex items-center gap-4 ml-14 md:justify-start sm:ml-1 ">
                   I create{" "}
                   <RotatingText
                     texts={[
@@ -42,7 +42,7 @@ function Intro() {
                       "сustom CMS",
                       "solutions",
                     ]}
-                    mainClassName=" w-fit auto text-[#5E3BEE]  overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                    mainClassName="w-fit auto text-[#5E3BEE] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
                     staggerFrom={"last"}
                     initial={{ y: "100%" }}
                     animate={{ y: 0, opacity: 1 }}

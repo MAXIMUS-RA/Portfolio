@@ -20,7 +20,7 @@ const ContactSection = () => {
   const formRef = useRef(null);
 
   useEffect(() => {
-    emailjs.init("r7q26xnCFjcxGZJ09");
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   }, []);
 
   const topics = [
@@ -71,9 +71,9 @@ const ContactSection = () => {
       };
 
       const result = await emailjs.send(
-        "service_wm9wrf8",
-        "template_m4u4yzn",
-        templateParams,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams
       );
 
       console.log("Email sent successfully:", result);
