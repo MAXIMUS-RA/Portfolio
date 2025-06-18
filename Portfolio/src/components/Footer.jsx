@@ -1,20 +1,21 @@
 import React from "react";
-import { Facebook, Twitter, Instagram, Linkedin,Github } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
 
 const Footer = () => {
-  const navigationLinks = [
-    "Home",
-    "Portfolio",
-    "About me",
-    "Contact",
-    "Testimonials",
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "About me", href: "#about" },
   ];
 
   const socialLinks = [
-    { icon: Instagram, href: "#", label: "Instagram",link:"https://www.instagram.com/m_x_m200_5/" },
-    { icon: Github, href: "#", label: "Github",link:"https://github.com/MAXIMUS-RA" },
+    {
+      icon: Instagram,
+      label: "Instagram",
+      link: "https://www.instagram.com/m_x_m200_5/",
+    },
+    { icon: Github, label: "Github", link: "https://github.com/MAXIMUS-RA" },
   ];
-
 
   return (
     <footer className="w-full px-4 sm:px-8 lg:px-20 py-16 lg:py-28 bg-slate-50 fade-in-section">
@@ -26,13 +27,13 @@ const Footer = () => {
             </span>
           </div>
           <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 lg:gap-11">
-            {navigationLinks.map((link, index) => (
+            {navLinks.map((link, index) => (
               <a
                 key={index}
-                href="#"
+                href={link.href}
                 className={`hover-primary text-base font-normal font-['Roboto'] leading-normal stagger-child delay-150`}
               >
-                {link}
+                {link.name}
               </a>
             ))}
           </div>
@@ -42,7 +43,7 @@ const Footer = () => {
               return (
                 <a
                   key={index}
-                  href={social.href}
+                  href={social.link}
                   aria-label={social.label}
                   className={`w-8 h-8 rounded-md flex items-center justify-center hover:bg-gray-100 transition-colors duration-200 stagger-child delay-150`}
                 >

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { Menu, X } from "lucide-react";
-import CircularText from "../CircularText/CircularText"
+import CircularText from "../CircularText/CircularText";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,10 +16,9 @@ function Header() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "Portfolio", href: "#" },
-    { name: "About me", href: "#" },
-    { name: "Testimonials", href: "#" },
+    { name: "Home", href: "#home" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "About me", href: "#about" },
   ];
 
   return (
@@ -37,18 +36,18 @@ function Header() {
 
         <nav className="hidden md:flex gap-6 lg:gap-8 xl:gap-10 items-center">
           {navLinks.map((link, index) => (
-            <Link
+            <a
               key={index}
-              to={link.href}
+              href={link.href}
               className="nav-link text-sm lg:text-base font-normal font-['Roboto']"
             >
               {link.name}
-            </Link>
+            </a>
           ))}
         </nav>
         <div className="hidden md:block">
           <button className="btn-border text-sm lg:text-base">
-            Contact Me
+            <a href="#contact">Contact Me</a>{" "}
           </button>
         </div>
 
