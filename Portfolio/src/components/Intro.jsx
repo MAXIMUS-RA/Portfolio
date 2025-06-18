@@ -65,7 +65,7 @@ function Intro() {
           </div>
 
           <div className="mt-6 mx-10 lg:mt-8 animate-slide-up-delay-3">
-            <BtnPrimary>Get in touch</BtnPrimary>
+            <BtnPrimary><a href="#contact">Get in touch</a></BtnPrimary>
           </div>
         </div>
       </div>
