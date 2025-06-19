@@ -79,7 +79,7 @@ function Header() {
               {link.name}
             </a>
           ))}
-          <button className="btn-border mt-4 self-start">Contact Me</button>
+          <button className="btn-border mt-4 self-start"><a href="#contact">Contact Me</a></button>
         </nav>
       </div>
     </header>
