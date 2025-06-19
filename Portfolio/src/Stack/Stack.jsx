@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function CardRotate({ children, onSendToBack, sensitivity }) {
   const x = useMotionValue(0);
@@ -42,6 +42,34 @@ export default function Stack({
   animationConfig = { stiffness: 260, damping: 20 },
   sendToBackOnClick = false,
 }) {
+  // Додайте стейт для адаптивних розмірів
+  const [responsiveSize, setResponsiveSize] = useState(cardDimensions);
+
+  // Функція для оновлення розмірів на основі ширини екрану
+  useEffect(() => {
+    const updateSize = () => {
+      const screenWidth = window.innerWidth;
+
+       if (screenWidth <= 768) {
+        // Планшети
+        setResponsiveSize({
+          width: screenWidth * 0.6,
+          height:  screenWidth * 0.6,
+        });
+      } else {
+        setResponsiveSize(cardDimensions);
+      }
+      
+    };
+
+    updateSize();
+    window.addEventListener("resize", updateSize);
+
+    return () => window.removeEventListener("resize", updateSize);
+  }, [cardDimensions]);
+      console.log(responsiveSize);
+
+
   const [cards, setCards] = useState(
     cardsData.length
       ? cardsData
@@ -62,7 +90,7 @@ export default function Stack({
             id: 4,
             img: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format",
           },
-        ],
+        ]
   );
 
   const sendToBack = (id) => {
@@ -79,8 +107,8 @@ export default function Stack({
     <div
       className="relative"
       style={{
-        width: cardDimensions.width,
-        height: cardDimensions.height,
+        width: responsiveSize.width,
+        height: responsiveSize.height,
         perspective: 600,
       }}
     >
@@ -108,8 +136,8 @@ export default function Stack({
                 damping: animationConfig.damping,
               }}
               style={{
-                width: cardDimensions.width,
-                height: cardDimensions.height,
+                width: responsiveSize.width,
+                height: responsiveSize.height,
               }}
             >
               <img

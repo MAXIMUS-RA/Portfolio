@@ -9,11 +9,6 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    {
-      icon: Instagram,
-      label: "Instagram",
-      link: "https://www.instagram.com/m_x_m200_5/",
-    },
     { icon: Github, label: "Github", link: "https://github.com/MAXIMUS-RA" },
   ];
 
