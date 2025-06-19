@@ -10,10 +10,7 @@
   --color-primary: #5e3bee;
   --color-heading: #282938;
   --color-body: #1c1e53;
-
 }
-
-
 
 @layer utilities {
   .body01 {
@@ -351,19 +348,14 @@
     animation: marquee-left 35s linear infinite;
   }
 
-  /* Pause анімації при hover */
   .animate-marquee:hover,
   .animate-marquee-slow:hover,
   .animate-marquee-right:hover,
   .animate-marquee-left:hover {
     animation-play-state: paused;
   }
-
-
-  
 }
 
-/* Додайте ці стилі для забезпечення правильної поведінки на мобільних */
 * {
   box-sizing: border-box;
 }
@@ -371,13 +363,16 @@
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 html {
+  scroll-behavior: smooth;
   overflow-x: hidden;
-  width: 100%;
+  height: 100%;
 }
 
 .container {

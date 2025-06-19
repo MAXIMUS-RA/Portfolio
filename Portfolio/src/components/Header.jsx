@@ -70,14 +70,14 @@ function Header() {
       >
         <nav className="flex flex-col gap-4 p-4 bg-white border-t">
           {navLinks.map((link, index) => (
-            <Link
+            <a
               key={index}
-              to={link.href}
+              href={link.href}
               className="nav-link text-base font-normal font-['Roboto'] py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
-            </Link>
+            </a>
           ))}
           <button className="btn-border mt-4 self-start">Contact Me</button>
         </nav>
